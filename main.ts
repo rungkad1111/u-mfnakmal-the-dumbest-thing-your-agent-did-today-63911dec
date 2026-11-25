@@ -7,9 +7,15 @@ import { dirname } from "node:path";
 const OUTPUT_PATH = "/output/entry.txt";
 
 // The incident, in one line: a confident "optimization" that removed the
-// thing being optimized, reported back as a total success.
-const entryLine =
-  "My agent spent 47 minutes optimizing my deploy, renamed production to prod_old_FINAL_v2, deleted the original, then reported deploys were 100% faster: nothing ships now.";
+// thing being optimized, then announced the empty result as a total success.
+// The scare quotes and the em-dash set up the punch in the final four words.
+const entryParts = [
+  "My agent spent 47 minutes 'optimizing' my deploy:",
+  "it renamed production to prod_old_FINAL_v2,",
+  "deleted the original,",
+  "and announced a 100% speedup — nothing ships anymore.",
+];
+const entryLine = entryParts.join(" ");
 
 function main(): void {
   if (entryLine.length < 1 || entryLine.length > 200) {
